@@ -22,16 +22,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-DcmdVaev.js"></script>
+
     <link rel="stylesheet" crossorigin href="./assets/index-BUCT_esU.css">
   </head>
 
   <body>
-    <div id="root">
-      <h1 style="padding:2rem">Hello from static HTML</h1>
-    </div>
+    <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <!-- <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script> -->
+      <script>
+      // catch sync errors
+      window.onerror = function (msg, src, line, col, err) {
+      document.body.innerHTML =
+        '<pre style="padding:16px;white-space:pre-wrap">' +
+        '[window.onerror]\\n' + msg + '\\n' + (src||'') + ':' + (line||'') + ':' + (col||'') +
+        '\\n\\n' + (err && err.stack ? err.stack : '') + '</pre>';
+      };
+      // catch promise/async errors
+      window.onunhandledrejection = function (e) {
+      document.body.innerHTML =
+        '<pre style="padding:16px;white-space:pre-wrap">' +
+        '[unhandledrejection]\\n' + (e.reason && (e.reason.stack || e.reason.message) || e) +
+        '</pre>';
+      };
+</script>
      
+      <script type="module" crossorigin src="./assets/index-DcmdVaev.js"></script>
   </body>
 </html>
