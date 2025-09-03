@@ -23,12 +23,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" crossorigin href="./assets/index-BUCT_esU.css">
-    <script type="module" crossorigin src="./assets/index-DcmdVaev.js"></script>
+    <script>
+      // Debug banner to prove HTML/JS is executing
+      (function(){
+        const b = document.createElement('div');
+        b.id = 'debug-banner';
+        b.textContent = '✅ HTML loaded - inline JS ran';
+        b.style.cssText = 'position:fixed;top:8px;left:8px;z-index:99999;padding:6px 10px;background:#0f0;color:#000;font:12px monospace;border-radius:4px';
+        document.addEventListener('DOMContentLoaded',()=>document.body.appendChild(b));
+        window.addEventListener('error', function(e){ console.log('[window.onerror]', e.message); });
+        window.addEventListener('unhandledrejection', function(e){ console.log('[unhandledrejection]', e.reason); });
+      })();
+    </script>
+    <script type="module">
+      console.log('Loading app module...');
+      import './assets/index-DcmdVaev.js'
+        .then(()=>console.log('✅ App module loaded'))
+        .catch(err=>{
+          console.error('❌ Failed to load app module', err);
+          const msg = document.createElement('div');
+          msg.textContent = '❌ Failed to load app module. See console.';
+          msg.style.cssText = 'position:fixed;top:36px;left:8px;z-index:99999;padding:6px 10px;background:#f00;color:#fff;font:12px monospace;border-radius:4px';
+          document.body.appendChild(msg);
+        });
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <!-- <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script> -->
-  </body>
+</body>
 </html>
